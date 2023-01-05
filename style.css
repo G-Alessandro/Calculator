@@ -25,10 +25,14 @@ body {
 .display {
     height: 60px;
     width: 400px;
+    display: flex;
+    flex-direction: row-reverse;
     background-color: white;
+    font-size: 55px;
+    font-weight: bold;
 }
 
-.clearBtn {
+.btnClear {
     height: 60px;
     width: 80px;
     font-size: 18px;
@@ -67,4 +71,8 @@ button.operator {
     font-size: 60px;
     font-weight: bold;
     margin: 2px;
+}
+
+.buttonTest {
+    background-color: brown;
 }
