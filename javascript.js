@@ -20,7 +20,11 @@ const btnDivide = document.getElementById("btnDivide");
 let btnClicked = [];
 
 function removeDoubleOperator () {
-    if ( btnClicked.at(-2) === '+' ) {
+    if ( btnClicked.at(-2) === '+' ||
+     btnClicked.at(-2) === "-" || 
+     btnClicked.at(-2) === "x" || 
+     btnClicked.at(-2) === ":" || 
+     btnClicked.at(-2) === "." ) {
         btnClicked.splice(-1)
     }
 }
@@ -47,13 +51,17 @@ function divide (...args) {
     return result
 };
 
+function operate () {
+
+};
+
 btnClear.addEventListener('click', function (){
     btnClicked = [];
     display.innerText = btnClicked
 });
 
 btn1.addEventListener('click', function () {
-    btnClicked.push("1")
+    btnClicked.push(1)
     display.innerText = btnClicked.slice(0, 13).join("")
     btnClicked.splice(14)
     console.log("1")
@@ -61,10 +69,91 @@ btn1.addEventListener('click', function () {
 });
 
 btn2.addEventListener('click', function () {
-    btnClicked.push("2")
+    btnClicked.push(2)
     display.innerText = btnClicked.slice(0, 13).join("")
     btnClicked.splice(14)
     console.log("2")
+    console.log(btnClicked)
+});
+
+btn3.addEventListener('click', function () {
+    btnClicked.push(3)
+    display.innerText = btnClicked.slice(0, 13).join("")
+    btnClicked.splice(14)
+    console.log("3")
+    console.log(btnClicked)
+});
+
+btn4.addEventListener('click', function () {
+    btnClicked.push(4)
+    display.innerText = btnClicked.slice(0, 13).join("")
+    btnClicked.splice(14)
+    console.log("4")
+    console.log(btnClicked)
+});
+
+btn5.addEventListener('click', function () {
+    btnClicked.push(5)
+    display.innerText = btnClicked.slice(0, 13).join("")
+    btnClicked.splice(14)
+    console.log("5")
+    console.log(btnClicked)
+});
+
+btn6.addEventListener('click', function () {
+    btnClicked.push(6)
+    display.innerText = btnClicked.slice(0, 13).join("")
+    btnClicked.splice(14)
+    console.log("6")
+    console.log(btnClicked)
+});
+
+btn7.addEventListener('click', function () {
+    btnClicked.push(7)
+    display.innerText = btnClicked.slice(0, 13).join("")
+    btnClicked.splice(14)
+    console.log("7")
+    console.log(btnClicked)
+});
+
+btn8.addEventListener('click', function () {
+    btnClicked.push(8)
+    display.innerText = btnClicked.slice(0, 13).join("")
+    btnClicked.splice(14)
+    console.log("8")
+    console.log(btnClicked)
+});
+
+btn9.addEventListener('click', function () {
+    btnClicked.push(9)
+    display.innerText = btnClicked.slice(0, 13).join("")
+    btnClicked.splice(14)
+    console.log("9")
+    console.log(btnClicked)
+});
+
+btn0.addEventListener('click', function () {
+    btnClicked.push(0)
+    display.innerText = btnClicked.slice(0, 13).join("")
+    btnClicked.splice(14)
+    console.log("0")
+    console.log(btnClicked)
+});
+
+btnDot.addEventListener('click', function () {
+    btnClicked.push(".")
+    removeDoubleOperator ()
+    display.innerText = btnClicked.slice(0, 13).join("")
+    btnClicked.splice(14)
+    console.log(".")
+    console.log(btnClicked)
+});
+
+btnEqual.addEventListener('click', function () {
+    btnClicked.push("=")
+    display.innerText = btnClicked.slice(0, 13).join("")
+    btnClicked.splice(14)
+    console.log("=")
     console.log(btnClicked)
 });
 
@@ -74,5 +163,32 @@ btnAdd.addEventListener('click', function () {
     display.innerText = btnClicked.slice(0, 13).join("")
     btnClicked.splice(14)
     console.log("+")
+    console.log(btnClicked)
+});
+
+btnSubtract.addEventListener('click', function () {
+    btnClicked.push("-")
+    removeDoubleOperator ()
+    display.innerText = btnClicked.slice(0, 13).join("")
+    btnClicked.splice(14)
+    console.log("-")
+    console.log(btnClicked)
+});
+
+btnMultiply.addEventListener('click', function () {
+    btnClicked.push("x")
+    removeDoubleOperator ()
+    display.innerText = btnClicked.slice(0, 13).join("")
+    btnClicked.splice(14)
+    console.log("*")
+    console.log(btnClicked)
+});
+
+btnDivide.addEventListener('click', function () {
+    btnClicked.push(":")
+    removeDoubleOperator ()
+    display.innerText = btnClicked.slice(0, 13).join("")
+    btnClicked.splice(14)
+    console.log(":")
     console.log(btnClicked)
 });
