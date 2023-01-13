@@ -33,8 +33,8 @@ function removeDoubleOperator () {
 
 function pushInNumToUse () {
     let numToUseJoin = numToUse.join("")
-    numToOperate.push(+numToUseJoin)
-    numToUse = [];
+        numToOperate.push(+numToUseJoin)
+        numToUse = [];
 }
 
 function operate () {
@@ -45,31 +45,23 @@ function operate () {
             let result = 0;
             if ( cutPart.includes("+")) {
                 result = cutPart[0] + cutPart[2];
-                btnClicked.splice(0,14,+result);
-                numToOperate = [];
             }
-            numToUse.push(+result);
-            display.innerText = btnClicked;
-            // switch (cutPart) {
-            //     case cutPart.includes("+"):
-            //         result = cutPart[0] + cutPart[2]
-            //         numToUse.splice( 0, 3, result)
-            //         break;
-            //     case cutPart.includes("-"):
-            //         result = cutPart[0] - cutPart[2]
-            //         numToUse.splice( 0, 3, resultSubtract)
-            //         break;
-            //     case cutPart.includes("*"):
-            //         result = cutPart[0] * cutPart[2]
-            //         numToUse.splice( 0, 3, result)
-            //         break;
-            //     case cutPart.includes("/"):
-            //         result = cutPart[0] / cutPart[2]
-            //         numToUse.splice( 0, 3, result)
-            //         break;
-            //}
+            if ( cutPart.includes("-")) {
+                result = cutPart[0] - cutPart[2];
+            }
+            if ( cutPart.includes("x")) {
+                result = cutPart[ 0 ] * cutPart[ 2 ];
+            }
+            if ( cutPart.includes(":")) {
+                result = cutPart[ 0 ] / cutPart[ 2 ];
+            }
+            numToOperate.splice( 0, 3, +result );
         }
     }
+    btnClicked.splice( 0, 14, +numToOperate[0] );
+    display.innerText = btnClicked;
+    numToUse.push(+numToOperate[0])
+    numToOperate = [];
 }
 
 // function add (...args) {
@@ -107,9 +99,9 @@ btn1.addEventListener('click', function () {
     display.innerText = btnClicked.slice(0, 13).join("")
     btnClicked.splice(14)
 
-    console.log(btnClicked,"btnClicked")
-    console.log(numToUse,"numToUse")
-    console.log(numToOperate, "numToOperate");
+    console.log(btnClicked,"btnClicked 1")
+    console.log(numToUse,"numToUse 2")
+    console.log(numToOperate, "numToOperate 3");
 });
 
 btn2.addEventListener('click', function () {
@@ -118,9 +110,9 @@ btn2.addEventListener('click', function () {
     display.innerText = btnClicked.slice(0, 13).join("")
     btnClicked.splice(14)
 
-    console.log(btnClicked,"btnClicked")
-    console.log(numToUse,"numToUse")
-    console.log(numToOperate, "numToOperate");
+    console.log(btnClicked,"btnClicked 1")
+    console.log(numToUse,"numToUse 2")
+    console.log(numToOperate, "numToOperate 3");
 });
 
 // btn3.addEventListener('click', function () {
@@ -199,9 +191,9 @@ btn2.addEventListener('click', function () {
 btnEqual.addEventListener('click', function () {
     operate ();
 
-    console.log(btnClicked,"btnClicked")
-    console.log(numToUse,"numToUse")
-    console.log(numToOperate, "numToOperate");
+    console.log(btnClicked,"btnClicked 1")
+    console.log(numToUse,"numToUse 2")
+    console.log(numToOperate, "numToOperate 3");
 });
 
 btnAdd.addEventListener('click', function () {
@@ -212,34 +204,46 @@ btnAdd.addEventListener('click', function () {
     display.innerText = btnClicked.slice(0, 13).join("");
     btnClicked.splice(14);
 
-    console.log(btnClicked,"btnClicked")
-    console.log(numToUse,"numToUse")
-    console.log(numToOperate, "numToOperate");
+    console.log(btnClicked,"btnClicked 1")
+    console.log(numToUse,"numToUse 2")
+    console.log(numToOperate, "numToOperate 3");
 });
 
-// btnSubtract.addEventListener('click', function () {
-//     btnClicked.push("-")
-//     removeDoubleOperator ()
-//     display.innerText = btnClicked.slice(0, 13).join("")
-//     btnClicked.splice(14)
-//     console.log("-")
-//     console.log(btnClicked)
-// });
+btnSubtract.addEventListener('click', function () {
+    pushInNumToUse ()
+    btnClicked.push("-");
+    numToOperate.push("-")
+    removeDoubleOperator ();
+    display.innerText = btnClicked.slice(0, 13).join("");
+    btnClicked.splice(14);
 
-// btnMultiply.addEventListener('click', function () {
-//     btnClicked.push("x")
-//     removeDoubleOperator ()
-//     display.innerText = btnClicked.slice(0, 13).join("")
-//     btnClicked.splice(14)
-//     console.log("*")
-//     console.log(btnClicked)
-// });
+    console.log(btnClicked,"btnClicked 1")
+    console.log(numToUse,"numToUse 2")
+    console.log(numToOperate, "numToOperate 3");
+});
 
-// btnDivide.addEventListener('click', function () {
-//     btnClicked.push(":")
-//     removeDoubleOperator ()
-//     display.innerText = btnClicked.slice(0, 13).join("")
-//     btnClicked.splice(14)
-//     console.log(":")
-//     console.log(btnClicked)
-// });
+btnMultiply.addEventListener('click', function () {
+    pushInNumToUse ()
+    btnClicked.push("x");
+    numToOperate.push("x")
+    removeDoubleOperator ();
+    display.innerText = btnClicked.slice(0, 13).join("");
+    btnClicked.splice(14);
+
+    console.log(btnClicked,"btnClicked 1")
+    console.log(numToUse,"numToUse 2")
+    console.log(numToOperate, "numToOperate 3");
+});
+
+btnDivide.addEventListener('click', function () {
+    pushInNumToUse ()
+    btnClicked.push(":");
+    numToOperate.push(":")
+    removeDoubleOperator ();
+    display.innerText = btnClicked.slice(0, 13).join("");
+    btnClicked.splice(14);
+
+    console.log(btnClicked,"btnClicked 1")
+    console.log(numToUse,"numToUse 2")
+    console.log(numToOperate, "numToOperate 3");
+});
