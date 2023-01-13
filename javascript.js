@@ -21,6 +21,12 @@ let btnClicked = [];
 let numToUse = [];
 let numToOperate = [];
 
+function typingLimiter () {
+    display.innerText = btnClicked.slice( 0, 13 ).join("");
+    btnClicked.splice( 14 );
+    numToUse.splice( 14 );
+}
+
 function removeDoubleOperator () {
     if ( btnClicked.at(-2) === '+' ||
          btnClicked.at(-2) === "-" || 
@@ -74,8 +80,7 @@ btnClear.addEventListener('click', function (){
 btn1.addEventListener('click', function () {
     btnClicked.push(1)
     numToUse.push(1)
-    display.innerText = btnClicked.slice(0, 13).join("")
-    btnClicked.splice(14)
+    typingLimiter ()
 
     console.log(btnClicked,"btnClicked 1")
     console.log(numToUse,"numToUse 2")
@@ -85,8 +90,7 @@ btn1.addEventListener('click', function () {
 btn2.addEventListener('click', function () {
     btnClicked.push(2)
     numToUse.push(2)
-    display.innerText = btnClicked.slice(0, 13).join("")
-    btnClicked.splice(14)
+    typingLimiter ()
 
     console.log(btnClicked,"btnClicked 1")
     console.log(numToUse,"numToUse 2")
@@ -179,8 +183,7 @@ btnAdd.addEventListener('click', function () {
     btnClicked.push("+");
     numToOperate.push("+")
     removeDoubleOperator ();
-    display.innerText = btnClicked.slice(0, 13).join("");
-    btnClicked.splice(14);
+    typingLimiter ()
 
     console.log(btnClicked,"btnClicked 1")
     console.log(numToUse,"numToUse 2")
@@ -192,8 +195,7 @@ btnSubtract.addEventListener('click', function () {
     btnClicked.push("-");
     numToOperate.push("-")
     removeDoubleOperator ();
-    display.innerText = btnClicked.slice(0, 13).join("");
-    btnClicked.splice(14);
+    typingLimiter ()
 
     console.log(btnClicked,"btnClicked 1")
     console.log(numToUse,"numToUse 2")
@@ -205,8 +207,7 @@ btnMultiply.addEventListener('click', function () {
     btnClicked.push("x");
     numToOperate.push("x")
     removeDoubleOperator ();
-    display.innerText = btnClicked.slice(0, 13).join("");
-    btnClicked.splice(14);
+    typingLimiter ()
 
     console.log(btnClicked,"btnClicked 1")
     console.log(numToUse,"numToUse 2")
@@ -218,8 +219,7 @@ btnDivide.addEventListener('click', function () {
     btnClicked.push(":");
     numToOperate.push(":")
     removeDoubleOperator ();
-    display.innerText = btnClicked.slice(0, 13).join("");
-    btnClicked.splice(14);
+    typingLimiter ();
 
     console.log(btnClicked,"btnClicked 1")
     console.log(numToUse,"numToUse 2")
