@@ -20,6 +20,7 @@ const btnDivide = document.getElementById("btnDivide");
 let btnClicked = [];
 let numToUse = [];
 let numToOperate = [];
+let operateResult = [];
 
 function typingLimiter () {
     display.innerText = btnClicked.slice( 0, 13 ).join("");
@@ -39,12 +40,18 @@ function removeDoubleOperator () {
 
 function pushInNumToUse () {
     let numToUseJoin = numToUse.join("")
+        btnClicked = [];
         numToOperate.push(+numToUseJoin)
         numToUse = [];
+        if ( numToOperate.length >= 3 ) {
+            operate ();
+            numToOperate.push(+numToUse);
+            numToUse = [];
+        }
 }
 
 function operate () {
-    pushInNumToUse ()
+    // pushInNumToUse ()
     if ( numToOperate.length >= 3 ) {
         for ( let i = numToOperate.length / 3 ; i > 0 ; i-- ) {
             let cutPart = numToOperate.slice( 0, 3);
@@ -64,8 +71,8 @@ function operate () {
             numToOperate.splice( 0, 3, +result );
         }
     }
-    btnClicked.splice( 0, 14, +numToOperate[0] );
-    display.innerText = btnClicked;
+    operateResult.splice( 0, 14, +numToOperate[0] );
+    display.innerText = operateResult;
     numToUse.push(+numToOperate[0])
     numToOperate = [];
 }
@@ -85,6 +92,7 @@ btn1.addEventListener('click', function () {
     console.log(btnClicked,"btnClicked 1")
     console.log(numToUse,"numToUse 2")
     console.log(numToOperate, "numToOperate 3");
+    console.log( operateResult, "operateResult 4" )
 });
 
 btn2.addEventListener('click', function () {
@@ -95,6 +103,7 @@ btn2.addEventListener('click', function () {
     console.log(btnClicked,"btnClicked 1")
     console.log(numToUse,"numToUse 2")
     console.log(numToOperate, "numToOperate 3");
+    console.log( operateResult, "operateResult 4" )
 });
 
 // btn3.addEventListener('click', function () {
@@ -171,57 +180,59 @@ btn2.addEventListener('click', function () {
 // });
 
 btnEqual.addEventListener('click', function () {
+    pushInNumToUse ()
     operate ();
 
     console.log(btnClicked,"btnClicked 1")
     console.log(numToUse,"numToUse 2")
     console.log(numToOperate, "numToOperate 3");
+    console.log( operateResult, "operateResult 4" )
 });
 
 btnAdd.addEventListener('click', function () {
+    typingLimiter ()
     pushInNumToUse ()
-    btnClicked.push("+");
     numToOperate.push("+")
     removeDoubleOperator ();
-    typingLimiter ()
 
     console.log(btnClicked,"btnClicked 1")
     console.log(numToUse,"numToUse 2")
     console.log(numToOperate, "numToOperate 3");
+    console.log( operateResult, "operateResult 4" )
 });
 
 btnSubtract.addEventListener('click', function () {
+    typingLimiter ()
     pushInNumToUse ()
-    btnClicked.push("-");
     numToOperate.push("-")
     removeDoubleOperator ();
-    typingLimiter ()
 
     console.log(btnClicked,"btnClicked 1")
     console.log(numToUse,"numToUse 2")
     console.log(numToOperate, "numToOperate 3");
+    console.log( operateResult, "operateResult 4" )
 });
 
 btnMultiply.addEventListener('click', function () {
+    typingLimiter ()
     pushInNumToUse ()
-    btnClicked.push("x");
     numToOperate.push("x")
     removeDoubleOperator ();
-    typingLimiter ()
 
     console.log(btnClicked,"btnClicked 1")
     console.log(numToUse,"numToUse 2")
     console.log(numToOperate, "numToOperate 3");
+    console.log( operateResult, "operateResult 4" )
 });
 
 btnDivide.addEventListener('click', function () {
+    typingLimiter ()
     pushInNumToUse ()
-    btnClicked.push(":");
     numToOperate.push(":")
     removeDoubleOperator ();
-    typingLimiter ();
 
     console.log(btnClicked,"btnClicked 1")
     console.log(numToUse,"numToUse 2")
     console.log(numToOperate, "numToOperate 3");
+    console.log( operateResult, "operateResult 4" )
 });
