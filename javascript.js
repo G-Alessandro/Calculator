@@ -28,6 +28,20 @@ function typingLimiter () {
     numToUse.splice( 14 );
 }
 
+function clear () {
+    btnClicked = [];
+    numToUse = [];
+    numToOperate = [];
+    display.innerText = btnClicked
+}
+
+function doubleZeroError () {
+    if ( isNaN(operateResult) ) {
+        operateResult = [];
+        operateResult.push("Ah ah ah, no!")
+    }
+}
+
 function pushInNumToUse () {
     let numToUseJoin = numToUse.join("")
         btnClicked = [];
@@ -61,16 +75,14 @@ function operate () {
         }
     }
     operateResult.splice( 0, 14, +numToOperate[0] );
+    doubleZeroError ()
     display.innerText = operateResult;
     numToUse.push(+numToOperate[0])
     numToOperate = [];
 }
 
-btnClear.addEventListener('click', function (){
-    btnClicked = [];
-    numToUse = [];
-    numToOperate = [];
-    display.innerText = btnClicked
+btnClear.addEventListener('click', function () {
+    clear ()
 });
 
 btn1.addEventListener('click', function () {
@@ -95,78 +107,104 @@ btn2.addEventListener('click', function () {
     console.log( operateResult, "operateResult 4" )
 });
 
-// btn3.addEventListener('click', function () {
-//     btnClicked.push(3)
-//     display.innerText = btnClicked.slice(0, 13).join("")
-//     btnClicked.splice(14)
-//     console.log("3")
-//     console.log(btnClicked)
-// });
+btn3.addEventListener('click', function () {
+    btnClicked.push(3)
+    numToUse.push(3)
+    typingLimiter ()
 
-// btn4.addEventListener('click', function () {
-//     btnClicked.push(4)
-//     display.innerText = btnClicked.slice(0, 13).join("")
-//     btnClicked.splice(14)
-//     console.log("4")
-//     console.log(btnClicked)
-// });
+    console.log(btnClicked,"btnClicked 1")
+    console.log(numToUse,"numToUse 2")
+    console.log(numToOperate, "numToOperate 3");
+    console.log( operateResult, "operateResult 4" )
+});
 
-// btn5.addEventListener('click', function () {
-//     btnClicked.push(5)
-//     display.innerText = btnClicked.slice(0, 13).join("")
-//     btnClicked.splice(14)
-//     console.log("5")
-//     console.log(btnClicked)
-// });
+btn4.addEventListener('click', function () {
+    btnClicked.push(4)
+    numToUse.push(4)
+    typingLimiter ()
 
-// btn6.addEventListener('click', function () {
-//     btnClicked.push(6)
-//     display.innerText = btnClicked.slice(0, 13).join("")
-//     btnClicked.splice(14)
-//     console.log("6")
-//     console.log(btnClicked)
-// });
+    console.log(btnClicked,"btnClicked 1")
+    console.log(numToUse,"numToUse 2")
+    console.log(numToOperate, "numToOperate 3");
+    console.log( operateResult, "operateResult 4" )
+});
 
-// btn7.addEventListener('click', function () {
-//     btnClicked.push(7)
-//     display.innerText = btnClicked.slice(0, 13).join("")
-//     btnClicked.splice(14)
-//     console.log("7")
-//     console.log(btnClicked)
-// });
+btn5.addEventListener('click', function () {
+    btnClicked.push(5)
+    numToUse.push(5)
+    typingLimiter ()
 
-// btn8.addEventListener('click', function () {
-//     btnClicked.push(8)
-//     display.innerText = btnClicked.slice(0, 13).join("")
-//     btnClicked.splice(14)
-//     console.log("8")
-//     console.log(btnClicked)
-// });
+    console.log(btnClicked,"btnClicked 1")
+    console.log(numToUse,"numToUse 2")
+    console.log(numToOperate, "numToOperate 3");
+    console.log( operateResult, "operateResult 4" )
+});
 
-// btn9.addEventListener('click', function () {
-//     btnClicked.push(9)
-//     display.innerText = btnClicked.slice(0, 13).join("")
-//     btnClicked.splice(14)
-//     console.log("9")
-//     console.log(btnClicked)
-// });
+btn6.addEventListener('click', function () {
+    btnClicked.push(6)
+    numToUse.push(6)
+    typingLimiter ()
 
-// btn0.addEventListener('click', function () {
-//     btnClicked.push(0)
-//     display.innerText = btnClicked.slice(0, 13).join("")
-//     btnClicked.splice(14)
-//     console.log("0")
-//     console.log(btnClicked)
-// });
+    console.log(btnClicked,"btnClicked 1")
+    console.log(numToUse,"numToUse 2")
+    console.log(numToOperate, "numToOperate 3");
+    console.log( operateResult, "operateResult 4" )
+});
 
-// btnDot.addEventListener('click', function () {
-//     btnClicked.push(".")
-//     removeDoubleOperator ()
-//     display.innerText = btnClicked.slice(0, 13).join("")
-//     btnClicked.splice(14)
-//     console.log(".")
-//     console.log(btnClicked)
-// });
+btn7.addEventListener('click', function () {
+    btnClicked.push(7)
+    numToUse.push(7)
+    typingLimiter ()
+
+    console.log(btnClicked,"btnClicked 1")
+    console.log(numToUse,"numToUse 2")
+    console.log(numToOperate, "numToOperate 3");
+    console.log( operateResult, "operateResult 4" )
+});
+
+btn8.addEventListener('click', function () {
+    btnClicked.push(8)
+    numToUse.push(8)
+    typingLimiter ()
+
+    console.log(btnClicked,"btnClicked 1")
+    console.log(numToUse,"numToUse 2")
+    console.log(numToOperate, "numToOperate 3");
+    console.log( operateResult, "operateResult 4" )
+});
+
+btn9.addEventListener('click', function () {
+    btnClicked.push(9)
+    numToUse.push(9)
+    typingLimiter ()
+
+    console.log(btnClicked,"btnClicked 1")
+    console.log(numToUse,"numToUse 2")
+    console.log(numToOperate, "numToOperate 3");
+    console.log( operateResult, "operateResult 4" )
+});
+
+btn0.addEventListener('click', function () {
+    btnClicked.push(0)
+    numToUse.push(0)
+    typingLimiter ()
+
+    console.log(btnClicked,"btnClicked 1")
+    console.log(numToUse,"numToUse 2")
+    console.log(numToOperate, "numToOperate 3");
+    console.log( operateResult, "operateResult 4" )
+});
+
+btnDot.addEventListener('click', function () {
+    btnClicked.push(".")
+    numToUse.push(".")
+    typingLimiter ()
+
+    console.log(btnClicked,"btnClicked 1")
+    console.log(numToUse,"numToUse 2")
+    console.log(numToOperate, "numToOperate 3");
+    console.log( operateResult, "operateResult 4" )
+});
 
 btnEqual.addEventListener('click', function () {
     pushInNumToUse ()
