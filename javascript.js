@@ -38,9 +38,22 @@ function clear () {
 function doubleZeroError () {
     if ( isNaN(operateResult) ) {
         operateResult = [];
-        operateResult.push("Ah ah ah, no!")
+        operateResult.push("Ah ah ah, no!");
     }
 }
+
+function longResult () {
+    let toStringRes = operateResult[0].toString();
+    let lengthRes = toStringRes.length;
+    if ( lengthRes > 14 ) {
+        let exponentsOfTen = 0;
+        let firstNum = toStringRes.slice( 0, 1 );
+        for ( ; lengthRes > 1 ; lengthRes--) {
+            exponentsOfTen++
+        }
+        display.innerText = firstNum + "e+" + exponentsOfTen;
+    }
+};
 
 function pushInNumToUse () {
     let numToUseJoin = numToUse.join("")
@@ -77,6 +90,7 @@ function operate () {
     operateResult.splice( 0, 14, +numToOperate[0] );
     doubleZeroError ()
     display.innerText = operateResult;
+    longResult ()
     numToUse.push(+numToOperate[0])
     numToOperate = [];
 }
