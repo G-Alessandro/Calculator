@@ -22,25 +22,32 @@ let numToUse = [];
 let numToOperate = [];
 let operateResult = [];
 
+function addSingleDot () {
+    if ( numToUse.includes(".") === false ) {
+        btnClicked.push(".");
+        numToUse.push("."); 
+    }
+};
+
 function typingLimiter () {
     display.innerText = btnClicked.slice( 0, 13 ).join("");
     btnClicked.splice( 14 );
     numToUse.splice( 14 );
-}
+};
 
 function clear () {
     btnClicked = [];
     numToUse = [];
     numToOperate = [];
     display.innerText = btnClicked
-}
+};
 
 function doubleZeroError () {
     if ( isNaN(operateResult) ) {
         operateResult = [];
         operateResult.push("Ah ah ah, no!");
     }
-}
+};
 
 function longResult () {
     let toStringRes = operateResult[0].toString();
@@ -48,10 +55,23 @@ function longResult () {
     if ( lengthRes > 14 ) {
         let exponentsOfTen = 0;
         let firstNum = toStringRes.slice( 0, 1 );
-        for ( ; lengthRes > 1 ; lengthRes--) {
-            exponentsOfTen++
+        if ( firstNum === 0 ) {
+            firstNum = toStringRes.slice( 0, 3 )
+            for ( ; lengthRes > 1 ; lengthRes--) {
+                exponentsOfTen++;
+            }
+            display.innerText = firstNum + "e-" + exponentsOfTen;
         }
-        display.innerText = firstNum + "e+" + exponentsOfTen;
+        if ( firstNum > 0 ) {
+            for ( ; lengthRes > 1 ; lengthRes--) {
+                exponentsOfTen++;
+            }
+            display.innerText = firstNum + "e+" + exponentsOfTen;
+        }
+    }
+    if ( toStringRes[0] === 0 ) {
+        let firstThreeNum = toStringRes.slice( 0, 3 )
+        display.innerText = firstThreeNum 
     }
 };
 
@@ -67,7 +87,29 @@ function pushInNumToUse () {
         }
 }
 
+// function operateSingleNumber () {
+//     if ( numToOperate.length === 2 ) {
+//         let cutPart = numToOperate.slice( 0, 2);
+//         let result = 0;
+//         if ( cutPart.includes("+")) {
+//             result = cutPart[0] + cutPart[0];
+//         }
+//         if ( cutPart.includes("-")) {
+//             result = cutPart[0] - cutPart[0];
+//         }
+//         if ( cutPart.includes("*")) {
+//             result = cutPart[0] * cutPart[0];
+//         }
+//         if ( cutPart.includes("/")) {
+//             result = cutPart[0] / cutPart[0];
+//         }
+//         console.log(result, "RESULT")
+//         numToOperate.splice( 0, 3, +result );
+//     }
+// };
+
 function operate () {
+    // operateSingleDigit ()
     if ( numToOperate.length >= 3 ) {
         for ( let i = numToOperate.length / 3 ; i > 0 ; i-- ) {
             let cutPart = numToOperate.slice( 0, 3);
@@ -79,19 +121,19 @@ function operate () {
                 result = cutPart[0] - cutPart[2];
             }
             if ( cutPart.includes("*")) {
-                result = cutPart[ 0 ] * cutPart[ 2 ];
+                result = cutPart[0] * cutPart[2];
             }
             if ( cutPart.includes("/")) {
-                result = cutPart[ 0 ] / cutPart[ 2 ];
+                result = cutPart[0] / cutPart[2];
             }
             numToOperate.splice( 0, 3, +result );
         }
-    }
+    };
     operateResult.splice( 0, 14, +numToOperate[0] );
-    doubleZeroError ()
+    doubleZeroError ();
     display.innerText = operateResult;
-    longResult ()
-    numToUse.push(+numToOperate[0])
+    longResult ();
+    numToUse.push(+numToOperate[0]);
     numToOperate = [];
 }
 
@@ -100,9 +142,9 @@ btnClear.addEventListener('click', function () {
 });
 
 btn1.addEventListener('click', function () {
-    btnClicked.push(1)
-    numToUse.push(1)
-    typingLimiter ()
+    btnClicked.push(1);
+    numToUse.push(1);
+    typingLimiter ();
 
     console.log(btnClicked,"btnClicked 1")
     console.log(numToUse,"numToUse 2")
@@ -111,9 +153,9 @@ btn1.addEventListener('click', function () {
 });
 
 btn2.addEventListener('click', function () {
-    btnClicked.push(2)
-    numToUse.push(2)
-    typingLimiter ()
+    btnClicked.push(2);
+    numToUse.push(2);
+    typingLimiter ();
 
     console.log(btnClicked,"btnClicked 1")
     console.log(numToUse,"numToUse 2")
@@ -122,9 +164,9 @@ btn2.addEventListener('click', function () {
 });
 
 btn3.addEventListener('click', function () {
-    btnClicked.push(3)
-    numToUse.push(3)
-    typingLimiter ()
+    btnClicked.push(3);
+    numToUse.push(3);
+    typingLimiter ();
 
     console.log(btnClicked,"btnClicked 1")
     console.log(numToUse,"numToUse 2")
@@ -133,9 +175,9 @@ btn3.addEventListener('click', function () {
 });
 
 btn4.addEventListener('click', function () {
-    btnClicked.push(4)
-    numToUse.push(4)
-    typingLimiter ()
+    btnClicked.push(4);
+    numToUse.push(4);
+    typingLimiter ();
 
     console.log(btnClicked,"btnClicked 1")
     console.log(numToUse,"numToUse 2")
@@ -144,9 +186,9 @@ btn4.addEventListener('click', function () {
 });
 
 btn5.addEventListener('click', function () {
-    btnClicked.push(5)
-    numToUse.push(5)
-    typingLimiter ()
+    btnClicked.push(5);
+    numToUse.push(5);
+    typingLimiter ();
 
     console.log(btnClicked,"btnClicked 1")
     console.log(numToUse,"numToUse 2")
@@ -155,9 +197,9 @@ btn5.addEventListener('click', function () {
 });
 
 btn6.addEventListener('click', function () {
-    btnClicked.push(6)
-    numToUse.push(6)
-    typingLimiter ()
+    btnClicked.push(6);
+    numToUse.push(6);
+    typingLimiter ();
 
     console.log(btnClicked,"btnClicked 1")
     console.log(numToUse,"numToUse 2")
@@ -166,9 +208,9 @@ btn6.addEventListener('click', function () {
 });
 
 btn7.addEventListener('click', function () {
-    btnClicked.push(7)
-    numToUse.push(7)
-    typingLimiter ()
+    btnClicked.push(7);
+    numToUse.push(7);
+    typingLimiter ();
 
     console.log(btnClicked,"btnClicked 1")
     console.log(numToUse,"numToUse 2")
@@ -177,8 +219,8 @@ btn7.addEventListener('click', function () {
 });
 
 btn8.addEventListener('click', function () {
-    btnClicked.push(8)
-    numToUse.push(8)
+    btnClicked.push(8);
+    numToUse.push(8);
     typingLimiter ()
 
     console.log(btnClicked,"btnClicked 1")
@@ -188,9 +230,9 @@ btn8.addEventListener('click', function () {
 });
 
 btn9.addEventListener('click', function () {
-    btnClicked.push(9)
-    numToUse.push(9)
-    typingLimiter ()
+    btnClicked.push(9);
+    numToUse.push(9);
+    typingLimiter ();
 
     console.log(btnClicked,"btnClicked 1")
     console.log(numToUse,"numToUse 2")
@@ -199,9 +241,9 @@ btn9.addEventListener('click', function () {
 });
 
 btn0.addEventListener('click', function () {
-    btnClicked.push(0)
-    numToUse.push(0)
-    typingLimiter ()
+    btnClicked.push(0);
+    numToUse.push(0);
+    typingLimiter ();
 
     console.log(btnClicked,"btnClicked 1")
     console.log(numToUse,"numToUse 2")
@@ -210,9 +252,8 @@ btn0.addEventListener('click', function () {
 });
 
 btnDot.addEventListener('click', function () {
-    btnClicked.push(".")
-    numToUse.push(".")
-    typingLimiter ()
+    addSingleDot ();
+    typingLimiter ();
 
     console.log(btnClicked,"btnClicked 1")
     console.log(numToUse,"numToUse 2")
@@ -221,7 +262,7 @@ btnDot.addEventListener('click', function () {
 });
 
 btnEqual.addEventListener('click', function () {
-    pushInNumToUse ()
+    pushInNumToUse ();
     operate ();
 
     console.log(btnClicked,"btnClicked 1")
