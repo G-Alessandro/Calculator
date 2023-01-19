@@ -30,7 +30,7 @@ function addSingleDot () {
 };
 
 function typingLimiter () {
-    display.innerText = btnClicked.slice( 0, 13 ).join("");
+    display.innerText = btnClicked.slice( 0, 14 ).join("");
     btnClicked.splice( 14 );
     numToUse.splice( 14 );
 };
@@ -55,22 +55,25 @@ function longResult () {
     if ( lengthRes > 14 ) {
         let exponentsOfTen = 0;
         let firstNum = toStringRes.slice( 0, 1 );
-        if ( firstNum === 0 ) {
+        if ( toStringRes.includes(".") ) {
             firstNum = toStringRes.slice( 0, 3 )
-            for ( ; lengthRes > 1 ; lengthRes--) {
+            if ( firstNum.slice( -1 ) === "." ) {
+                firstNum = firstNum.slice( 0, -1 );
+            }
+            for ( ; lengthRes > 3 ; lengthRes--) {
                 exponentsOfTen++;
             }
             display.innerText = firstNum + "e-" + exponentsOfTen;
         }
-        if ( firstNum > 0 ) {
+        if ( toStringRes.includes(".") === false ) {
             for ( ; lengthRes > 1 ; lengthRes--) {
                 exponentsOfTen++;
             }
             display.innerText = firstNum + "e+" + exponentsOfTen;
         }
     }
-    if ( toStringRes[0] === 0 ) {
-        let firstThreeNum = toStringRes.slice( 0, 3 )
+    if ( toStringRes.includes(".") ) {
+        let firstThreeNum = toStringRes.slice( 0, 5 )
         display.innerText = firstThreeNum 
     }
 };
