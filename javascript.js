@@ -1,5 +1,6 @@
 const body = document.querySelector('body');
 const display = document.getElementById("display");
+const btnCancel = document.getElementById("btnCancel");
 const btnClear = document.getElementById("btnClear");
 const btn1 = document.getElementById("btn1");
 const btn2 = document.getElementById("btn2");
@@ -22,6 +23,19 @@ let numToUse = [];
 let numToOperate = [];
 let operateResult = [];
 
+function cancel () {
+    btnClicked = btnClicked.slice( 0, -1 )
+    display.innerText = btnClicked.join("")
+    numToUse = numToUse.slice( 0, -1 )
+};
+
+function clear () {
+    btnClicked = [];
+    numToUse = [];
+    numToOperate = [];
+    display.innerText = btnClicked
+};
+
 function addSingleDot () {
     if ( numToUse.includes(".") === false ) {
         btnClicked.push(".");
@@ -35,12 +49,6 @@ function typingLimiter () {
     numToUse.splice( 14 );
 };
 
-function clear () {
-    btnClicked = [];
-    numToUse = [];
-    numToOperate = [];
-    display.innerText = btnClicked
-};
 
 function doubleZeroError () {
     if ( isNaN(operateResult) ) {
@@ -140,8 +148,12 @@ function operate () {
     numToOperate = [];
 }
 
+btnCancel.addEventListener('click', function () {
+    cancel ();
+})
+
 btnClear.addEventListener('click', function () {
-    clear ()
+    clear ();
 });
 
 btn1.addEventListener('click', function () {
