@@ -14,6 +14,7 @@ const btn9 = document.getElementById("btn9");
 const btn0 = document.getElementById("btn0");
 const btnDot = document.getElementById("btnDot");
 const btnEqual = document.getElementById("btnEqual");
+const btnPercentage = document.getElementById("btnPercentage");
 const btnAdd = document.getElementById("btnAdd");
 const btnSubtract = document.getElementById("btnSubtract");
 const btnMultiply = document.getElementById("btnMultiply");
@@ -86,7 +87,7 @@ function longResult () {
     }
 };
 
-function pushInNumToUse () {
+function pushInNumToOperate () {
     let numToUseJoin = numToUse.join("")
         btnClicked = [];
         numToOperate.push(+numToUseJoin)
@@ -119,22 +120,37 @@ function pushInNumToUse () {
 //     }
 // };
 
+function percentage () {
+    let numToUseJoin = numToUse.join("")
+    btnClicked = [];
+    numToOperate.push(+numToUseJoin)
+    numToUse = [];
+    if ( numToOperate.length === 3 && numToOperate.includes("%")) {
+        numToOperate.splice( 0, 3, + ( numToOperate[2] / 100 * numToOperate[0] ))
+    }
+    if ( numToOperate.length === 3 ) {
+        numToOperate.splice( 2, 2, +(numToOperate[0] / 100 * numToOperate[2]))
+        operate ();
+    }
+};
+
 function operate () {
     // operateSingleDigit ()
     if ( numToOperate.length >= 3 ) {
         for ( let i = numToOperate.length / 3 ; i > 0 ; i-- ) {
             let cutPart = numToOperate.slice( 0, 3);
-            let result = 0;
-            if ( cutPart.includes("+")) {
+            let result = 0;        
+
+            if ( cutPart.includes("+") ) {
                 result = cutPart[0] + cutPart[2];
             }
-            if ( cutPart.includes("-")) {
+            if ( cutPart.includes("-") ) {
                 result = cutPart[0] - cutPart[2];
             }
-            if ( cutPart.includes("*")) {
+            if ( cutPart.includes("*") ) {
                 result = cutPart[0] * cutPart[2];
             }
-            if ( cutPart.includes("/")) {
+            if ( cutPart.includes("/") ) {
                 result = cutPart[0] / cutPart[2];
             }
             numToOperate.splice( 0, 3, +result );
@@ -277,7 +293,10 @@ btnDot.addEventListener('click', function () {
 });
 
 btnEqual.addEventListener('click', function () {
-    pushInNumToUse ();
+    if ( numToOperate.includes("%") ) {
+        percentage ()
+    }
+    pushInNumToOperate ();
     operate ();
 
     console.log(btnClicked,"btnClicked 1")
@@ -286,10 +305,24 @@ btnEqual.addEventListener('click', function () {
     console.log( operateResult, "operateResult 4" )
 });
 
+btnPercentage.addEventListener('click', function () {
+    typingLimiter ();
+    percentage ()
+    numToOperate.push("%");
+    if ( numToOperate.length === 1 && numToOperate.includes( "%" ) ) {
+        numToOperate.splice( 0, 1 )
+    }
+
+    console.log(btnClicked,"btnClicked 1")
+    console.log(numToUse,"numToUse 2")
+    console.log(numToOperate, "numToOperate 3");
+    console.log( operateResult, "operateResult 4" )
+});
+
 btnAdd.addEventListener('click', function () {
-    typingLimiter ()
-    pushInNumToUse ()
-    numToOperate.push("+")
+    typingLimiter ();
+    pushInNumToOperate ();
+    numToOperate.push("+");
 
     console.log(btnClicked,"btnClicked 1")
     console.log(numToUse,"numToUse 2")
@@ -299,7 +332,7 @@ btnAdd.addEventListener('click', function () {
 
 btnSubtract.addEventListener('click', function () {
     typingLimiter ()
-    pushInNumToUse ()
+    pushInNumToOperate ()
     numToOperate.push("-")
 
     console.log(btnClicked,"btnClicked 1")
@@ -310,7 +343,7 @@ btnSubtract.addEventListener('click', function () {
 
 btnMultiply.addEventListener('click', function () {
     typingLimiter ()
-    pushInNumToUse ()
+    pushInNumToOperate ()
     numToOperate.push("*")
 
     console.log(btnClicked,"btnClicked 1")
@@ -321,7 +354,7 @@ btnMultiply.addEventListener('click', function () {
 
 btnDivide.addEventListener('click', function () {
     typingLimiter ()
-    pushInNumToUse ()
+    pushInNumToOperate ()
     numToOperate.push("/")
 
     console.log(btnClicked,"btnClicked 1")
