@@ -23,6 +23,13 @@ let btnClicked = [];
 let numToUse = [];
 let numToOperate = [];
 let operateResult = [];
+let operateSingleNumber = [];
+
+function operateSingleNumberEmpty () {
+    if ( operateSingleNumber.length === 2 ) {
+        operateSingleNumber = [];
+    };
+}
 
 function cancel () {
     btnClicked = btnClicked.slice( 0, -1 )
@@ -34,7 +41,9 @@ function clear () {
     btnClicked = [];
     numToUse = [];
     numToOperate = [];
-    display.innerText = btnClicked
+    operateResult = [];
+    operateSingleNumber= [];
+    display.innerText = btnClicked;
 };
 
 function addSingleDot () {
@@ -88,37 +97,16 @@ function longResult () {
 };
 
 function pushInNumToOperate () {
-    let numToUseJoin = numToUse.join("")
-        btnClicked = [];
-        numToOperate.push(+numToUseJoin)
+    let numToUseJoin = numToUse.join("");
+    btnClicked = [];
+    numToOperate.push(+numToUseJoin);
+    numToUse = [];
+    if ( numToOperate.length >= 3 ) {
+        operate ();
+        numToOperate.push(+numToUse);
         numToUse = [];
-        if ( numToOperate.length >= 3 ) {
-            operate ();
-            numToOperate.push(+numToUse);
-            numToUse = [];
-        }
+    };
 }
-
-// function operateSingleNumber () {
-//     if ( numToOperate.length === 2 ) {
-//         let cutPart = numToOperate.slice( 0, 2);
-//         let result = 0;
-//         if ( cutPart.includes("+")) {
-//             result = cutPart[0] + cutPart[0];
-//         }
-//         if ( cutPart.includes("-")) {
-//             result = cutPart[0] - cutPart[0];
-//         }
-//         if ( cutPart.includes("*")) {
-//             result = cutPart[0] * cutPart[0];
-//         }
-//         if ( cutPart.includes("/")) {
-//             result = cutPart[0] / cutPart[0];
-//         }
-//         console.log(result, "RESULT")
-//         numToOperate.splice( 0, 3, +result );
-//     }
-// };
 
 function percentage () {
     let numToUseJoin = numToUse.join("")
@@ -135,7 +123,6 @@ function percentage () {
 };
 
 function operate () {
-    // operateSingleDigit ()
     if ( numToOperate.length >= 3 ) {
         for ( let i = numToOperate.length / 3 ; i > 0 ; i-- ) {
             let cutPart = numToOperate.slice( 0, 3);
@@ -192,6 +179,7 @@ btn2.addEventListener('click', function () {
     console.log(numToUse,"numToUse 2")
     console.log(numToOperate, "numToOperate 3");
     console.log( operateResult, "operateResult 4" )
+    console.log( operateSingleNumber,"operateSingleNumber 5" )
 });
 
 btn3.addEventListener('click', function () {
@@ -236,6 +224,7 @@ btn6.addEventListener('click', function () {
     console.log(numToUse,"numToUse 2")
     console.log(numToOperate, "numToOperate 3");
     console.log( operateResult, "operateResult 4" )
+    console.log( operateSingleNumber,"operateSingleNumber 5" )
 });
 
 btn7.addEventListener('click', function () {
@@ -295,7 +284,23 @@ btnDot.addEventListener('click', function () {
 btnEqual.addEventListener('click', function () {
     if ( numToOperate.includes("%") ) {
         percentage ()
-    }
+    };
+
+    //Operation with a single number
+    if ( numToOperate.length === 2 && numToUse.length === 0) {
+        operateSingleNumber.push( numToOperate[0], numToOperate[1] );
+        if ( operateSingleNumber.length === 4 ) {
+            operateSingleNumber.splice( 2, 2 );
+        };
+        numToOperate.push( operateSingleNumber[0], operateSingleNumber[1] );
+    };
+    if ( numToUse.length === 1 && numToOperate.length === 2 ) {
+        operateSingleNumber.push( numToUse[0], numToOperate[1] )
+    };
+    if ( numToOperate.length === 0 ) {
+        numToOperate.push( operateSingleNumber[0], operateSingleNumber[1] );
+    };
+
     pushInNumToOperate ();
     operate ();
 
@@ -303,15 +308,16 @@ btnEqual.addEventListener('click', function () {
     console.log(numToUse,"numToUse 2")
     console.log(numToOperate, "numToOperate 3");
     console.log( operateResult, "operateResult 4" )
+    console.log( operateSingleNumber,"operateSingleNumber 5" )
 });
 
 btnPercentage.addEventListener('click', function () {
     typingLimiter ();
-    percentage ()
+    percentage ();
     numToOperate.push("%");
     if ( numToOperate.length === 1 && numToOperate.includes( "%" ) ) {
-        numToOperate.splice( 0, 1 )
-    }
+        numToOperate.splice( 0, 1 );
+    };
 
     console.log(btnClicked,"btnClicked 1")
     console.log(numToUse,"numToUse 2")
@@ -320,6 +326,7 @@ btnPercentage.addEventListener('click', function () {
 });
 
 btnAdd.addEventListener('click', function () {
+    operateSingleNumberEmpty ();
     typingLimiter ();
     pushInNumToOperate ();
     numToOperate.push("+");
@@ -328,12 +335,14 @@ btnAdd.addEventListener('click', function () {
     console.log(numToUse,"numToUse 2")
     console.log(numToOperate, "numToOperate 3");
     console.log( operateResult, "operateResult 4" )
+    console.log( operateSingleNumber,"operateSingleNumber 5" )
 });
 
 btnSubtract.addEventListener('click', function () {
-    typingLimiter ()
-    pushInNumToOperate ()
-    numToOperate.push("-")
+    operateSingleNumberEmpty ();
+    typingLimiter ();
+    pushInNumToOperate ();
+    numToOperate.push("-");
 
     console.log(btnClicked,"btnClicked 1")
     console.log(numToUse,"numToUse 2")
@@ -342,9 +351,10 @@ btnSubtract.addEventListener('click', function () {
 });
 
 btnMultiply.addEventListener('click', function () {
-    typingLimiter ()
-    pushInNumToOperate ()
-    numToOperate.push("*")
+    operateSingleNumberEmpty ();
+    typingLimiter ();
+    pushInNumToOperate ();
+    numToOperate.push("*");
 
     console.log(btnClicked,"btnClicked 1")
     console.log(numToUse,"numToUse 2")
@@ -353,9 +363,10 @@ btnMultiply.addEventListener('click', function () {
 });
 
 btnDivide.addEventListener('click', function () {
-    typingLimiter ()
-    pushInNumToOperate ()
-    numToOperate.push("/")
+    operateSingleNumberEmpty ();
+    typingLimiter ();
+    pushInNumToOperate ();
+    numToOperate.push("/");
 
     console.log(btnClicked,"btnClicked 1")
     console.log(numToUse,"numToUse 2")
