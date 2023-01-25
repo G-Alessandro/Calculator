@@ -29,12 +29,12 @@ function operateSingleNumberEmpty () {
     if ( operateSingleNumber.length === 2 ) {
         operateSingleNumber = [];
     };
-}
+};
 
 function cancel () {
-    btnClicked = btnClicked.slice( 0, -1 )
-    display.innerText = btnClicked.join("")
-    numToUse = numToUse.slice( 0, -1 )
+    btnClicked = btnClicked.slice( 0, -1 );
+    display.innerText = btnClicked.join("");
+    numToUse = numToUse.slice( 0, -1 );
 };
 
 function clear () {
@@ -50,7 +50,7 @@ function addSingleDot () {
     if ( numToUse.includes(".") === false ) {
         btnClicked.push(".");
         numToUse.push("."); 
-    }
+    };
 };
 
 function typingLimiter () {
@@ -64,7 +64,7 @@ function doubleZeroError () {
     if ( isNaN(operateResult) ) {
         operateResult = [];
         operateResult.push("Ah ah ah, no!");
-    }
+    };
 };
 
 function longResult () {
@@ -74,26 +74,26 @@ function longResult () {
         let exponentsOfTen = 0;
         let firstNum = toStringRes.slice( 0, 1 );
         if ( toStringRes.includes(".") ) {
-            firstNum = toStringRes.slice( 0, 3 )
+            firstNum = toStringRes.slice( 0, 3 );
             if ( firstNum.slice( -1 ) === "." ) {
                 firstNum = firstNum.slice( 0, -1 );
-            }
+            };
             for ( ; lengthRes > 3 ; lengthRes--) {
                 exponentsOfTen++;
-            }
+            };
             display.innerText = firstNum + "e-" + exponentsOfTen;
-        }
+        };
         if ( toStringRes.includes(".") === false ) {
             for ( ; lengthRes > 1 ; lengthRes--) {
                 exponentsOfTen++;
-            }
+            };
             display.innerText = firstNum + "e+" + exponentsOfTen;
         }
-    }
+    };
     if ( toStringRes.includes(".") ) {
-        let firstThreeNum = toStringRes.slice( 0, 5 )
-        display.innerText = firstThreeNum 
-    }
+        let firstThreeNum = toStringRes.slice( 0, 5 );
+        display.innerText = firstThreeNum;
+    };
 };
 
 function pushInNumToOperate () {
@@ -109,17 +109,17 @@ function pushInNumToOperate () {
 }
 
 function percentage () {
-    let numToUseJoin = numToUse.join("")
+    let numToUseJoin = numToUse.join("");
     btnClicked = [];
-    numToOperate.push(+numToUseJoin)
+    numToOperate.push(+numToUseJoin);
     numToUse = [];
     if ( numToOperate.length === 3 && numToOperate.includes("%")) {
-        numToOperate.splice( 0, 3, + ( numToOperate[2] / 100 * numToOperate[0] ))
-    }
+        numToOperate.splice( 0, 3, + ( numToOperate[2] / 100 * numToOperate[0] ));
+    };
     if ( numToOperate.length === 3 ) {
-        numToOperate.splice( 2, 2, +(numToOperate[0] / 100 * numToOperate[2]))
+        numToOperate.splice( 2, 2, +( numToOperate[0] / 100 * numToOperate[2] ));
         operate ();
-    }
+    };
 };
 
 function operate () {
@@ -130,16 +130,16 @@ function operate () {
 
             if ( cutPart.includes("+") ) {
                 result = cutPart[0] + cutPart[2];
-            }
+            };
             if ( cutPart.includes("-") ) {
                 result = cutPart[0] - cutPart[2];
-            }
+            };
             if ( cutPart.includes("*") ) {
                 result = cutPart[0] * cutPart[2];
-            }
+            };
             if ( cutPart.includes("/") ) {
                 result = cutPart[0] / cutPart[2];
-            }
+            };
             numToOperate.splice( 0, 3, +result );
         }
     };
@@ -153,7 +153,7 @@ function operate () {
 
 btnCancel.addEventListener('click', function () {
     cancel ();
-})
+});
 
 btnClear.addEventListener('click', function () {
     clear ();
@@ -241,7 +241,7 @@ btn7.addEventListener('click', function () {
 btn8.addEventListener('click', function () {
     btnClicked.push(8);
     numToUse.push(8);
-    typingLimiter ()
+    typingLimiter ();
 
     console.log(btnClicked,"btnClicked 1")
     console.log(numToUse,"numToUse 2")
@@ -372,4 +372,64 @@ btnDivide.addEventListener('click', function () {
     console.log(numToUse,"numToUse 2")
     console.log(numToOperate, "numToOperate 3");
     console.log( operateResult, "operateResult 4" )
+});
+
+document.addEventListener('keydown', function (event) {
+    if ( event.key === "1") {
+        btn1.click();
+    };
+    if ( event.key === "2") {
+        btn2.click();
+    };
+    if ( event.key === "3") {
+        btn3.click();
+    };
+    if ( event.key === "4") {
+        btn4.click();
+    };
+    if ( event.key === "5") {
+        btn5.click();
+    };
+    if ( event.key === "6") {
+        btn6.click();
+    };
+    if ( event.key === "7") {
+        btn7.click();
+    };
+    if ( event.key === "8") {
+        btn8.click();
+    };
+    if ( event.key === "9") {
+        btn9.click();
+    };
+    if ( event.key === "0") {
+        btn0.click();
+    };
+    if ( event.key === ".") {
+        btnDot.click();
+    };
+    if ( event.key === "Enter") {
+        btnEqual.click();
+    };
+    if ( event.key === "%") {
+        btnPercentage.click();
+    };
+    if ( event.key === "+") {
+        btnAdd.click();
+    };
+    if ( event.key === "-") {
+        btnSubtract.click();
+    };
+    if ( event.key === "*") {
+        btnMultiply.click();
+    };
+    if ( event.key === "/") {
+        btnDivide.click();
+    };
+    if ( event.key === "Backspace") {
+        btnCancel.click();
+    };
+    if ( event.key === "Delete") {
+        btnClear.click();
+    };
 });
