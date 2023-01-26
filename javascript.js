@@ -91,11 +91,8 @@ function longResult () {
         }
     };
     if ( toStringRes.includes(".") ) {
-        let firstThreeNum = toStringRes.slice( 0, 5 );
-        if ( toStringRes.length > 5 ) {
             let afterDotResult = toStringRes.indexOf( "." ) + 4;
-            firstThreeNum = toStringRes.slice( 0, afterDotResult );
-        }
+            let firstThreeNum = toStringRes.slice( 0, afterDotResult );
         display.innerText = firstThreeNum;
     };
 };
