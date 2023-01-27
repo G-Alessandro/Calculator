@@ -31,6 +31,13 @@ function operateSingleNumberEmpty () {
     };
 };
 
+function noOperatorsClicked () {
+    let firstNumToUse = numToUse[0].toString().length;
+    if ( firstNumToUse > 1 ) {
+        numToUse.splice( 0, 1 );
+    };
+};
+
 function cancel () {
     btnClicked = btnClicked.slice( 0, -1 );
     display.innerText = btnClicked.join("");
@@ -91,8 +98,8 @@ function longResult () {
         }
     };
     if ( toStringRes.includes(".") ) {
-            let afterDotResult = toStringRes.indexOf( "." ) + 4;
-            let firstThreeNum = toStringRes.slice( 0, afterDotResult );
+        let afterDotResult = toStringRes.indexOf( "." ) + 4;
+        let firstThreeNum = toStringRes.slice( 0, afterDotResult );
         display.innerText = firstThreeNum;
     };
 };
@@ -100,6 +107,9 @@ function longResult () {
 function pushInNumToOperate () {
     let numToUseJoin = numToUse.join("");
     btnClicked = [];
+    if ( numToUse.length === 1  && operateResult.length === 1 ) {
+        display.innerText = operateResult;
+    }
     numToOperate.push(+numToUseJoin);
     numToUse = [];
     if ( numToOperate.length >= 3 ) {
@@ -128,7 +138,7 @@ function operate () {
         for ( let i = numToOperate.length / 3 ; i > 0 ; i-- ) {
             let cutPart = numToOperate.slice( 0, 3);
             let result = 0;        
-
+            
             if ( cutPart.includes("+") ) {
                 result = cutPart[0] + cutPart[2];
             };
@@ -163,8 +173,9 @@ btnClear.addEventListener('click', function () {
 btn1.addEventListener('click', function () {
     btnClicked.push(1);
     numToUse.push(1);
+    noOperatorsClicked ();
     typingLimiter ();
-
+    
     console.log(btnClicked,"btnClicked 1")
     console.log(numToUse,"numToUse 2")
     console.log(numToOperate, "numToOperate 3");
@@ -174,8 +185,9 @@ btn1.addEventListener('click', function () {
 btn2.addEventListener('click', function () {
     btnClicked.push(2);
     numToUse.push(2);
+    noOperatorsClicked ();
     typingLimiter ();
-
+    
     console.log(btnClicked,"btnClicked 1")
     console.log(numToUse,"numToUse 2")
     console.log(numToOperate, "numToOperate 3");
@@ -186,8 +198,9 @@ btn2.addEventListener('click', function () {
 btn3.addEventListener('click', function () {
     btnClicked.push(3);
     numToUse.push(3);
+    noOperatorsClicked ();
     typingLimiter ();
-
+    
     console.log(btnClicked,"btnClicked 1")
     console.log(numToUse,"numToUse 2")
     console.log(numToOperate, "numToOperate 3");
@@ -197,6 +210,7 @@ btn3.addEventListener('click', function () {
 btn4.addEventListener('click', function () {
     btnClicked.push(4);
     numToUse.push(4);
+    noOperatorsClicked ();
     typingLimiter ();
 
     console.log(btnClicked,"btnClicked 1")
@@ -208,6 +222,7 @@ btn4.addEventListener('click', function () {
 btn5.addEventListener('click', function () {
     btnClicked.push(5);
     numToUse.push(5);
+    noOperatorsClicked ();
     typingLimiter ();
 
     console.log(btnClicked,"btnClicked 1")
@@ -219,6 +234,7 @@ btn5.addEventListener('click', function () {
 btn6.addEventListener('click', function () {
     btnClicked.push(6);
     numToUse.push(6);
+    noOperatorsClicked ();
     typingLimiter ();
 
     console.log(btnClicked,"btnClicked 1")
@@ -231,6 +247,7 @@ btn6.addEventListener('click', function () {
 btn7.addEventListener('click', function () {
     btnClicked.push(7);
     numToUse.push(7);
+    noOperatorsClicked ();
     typingLimiter ();
 
     console.log(btnClicked,"btnClicked 1")
@@ -242,6 +259,7 @@ btn7.addEventListener('click', function () {
 btn8.addEventListener('click', function () {
     btnClicked.push(8);
     numToUse.push(8);
+    noOperatorsClicked ();
     typingLimiter ();
 
     console.log(btnClicked,"btnClicked 1")
@@ -253,6 +271,7 @@ btn8.addEventListener('click', function () {
 btn9.addEventListener('click', function () {
     btnClicked.push(9);
     numToUse.push(9);
+    noOperatorsClicked ();
     typingLimiter ();
 
     console.log(btnClicked,"btnClicked 1")
@@ -264,6 +283,7 @@ btn9.addEventListener('click', function () {
 btn0.addEventListener('click', function () {
     btnClicked.push(0);
     numToUse.push(0);
+    noOperatorsClicked ();
     typingLimiter ();
 
     console.log(btnClicked,"btnClicked 1")
@@ -274,6 +294,7 @@ btn0.addEventListener('click', function () {
 
 btnDot.addEventListener('click', function () {
     addSingleDot ();
+    noOperatorsClicked ();
     typingLimiter ();
 
     console.log(btnClicked,"btnClicked 1")
