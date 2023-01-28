@@ -1,6 +1,6 @@
 const body = document.querySelector('body');
 const display = document.getElementById("display");
-const btnCancel = document.getElementById("btnCancel");
+const btnBackspace = document.getElementById("btnBackspace");
 const btnClear = document.getElementById("btnClear");
 const btn1 = document.getElementById("btn1");
 const btn2 = document.getElementById("btn2");
@@ -38,7 +38,7 @@ function noOperatorsClicked () {
     };
 };
 
-function cancel () {
+function backspace () {
     btnClicked = btnClicked.slice( 0, -1 );
     display.innerText = btnClicked.join("");
     numToUse = numToUse.slice( 0, -1 );
@@ -61,9 +61,9 @@ function addSingleDot () {
 };
 
 function typingLimiter () {
-    display.innerText = btnClicked.slice( 0, 14 ).join("");
-    btnClicked.splice( 14 );
-    numToUse.splice( 14 );
+    display.innerText = btnClicked.slice( 0, 12 ).join("");
+    btnClicked.splice( 12 );
+    numToUse.splice( 12 );
 };
 
 
@@ -77,7 +77,7 @@ function doubleZeroError () {
 function longResult () {
     let toStringRes = operateResult[0].toString();
     let lengthRes = toStringRes.length;
-    if ( lengthRes > 14 ) {
+    if ( lengthRes > 12 ) {
         let exponentsOfTen = 0;
         let firstNum = toStringRes.slice( 0, 1 );
         if ( toStringRes.includes(".") ) {
@@ -162,8 +162,8 @@ function operate () {
     numToOperate = [];
 }
 
-btnCancel.addEventListener('click', function () {
-    cancel ();
+btnBackspace.addEventListener('click', function () {
+    backspace ();
 });
 
 btnClear.addEventListener('click', function () {
