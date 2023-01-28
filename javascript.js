@@ -70,14 +70,14 @@ function typingLimiter () {
 function doubleZeroError () {
     if ( isNaN(operateResult) ) {
         operateResult = [];
-        operateResult.push("Ah ah ah, no!");
+        operateResult.push("AHAHAH, no!");
     };
 };
 
 function longResult () {
     let toStringRes = operateResult[0].toString();
     let lengthRes = toStringRes.length;
-    if ( lengthRes > 12 ) {
+    if ( lengthRes > 12 && operateResult[0] != "AHAHAH, no!" ) {
         let exponentsOfTen = 0;
         let firstNum = toStringRes.slice( 0, 1 );
         if ( toStringRes.includes(".") ) {
@@ -154,7 +154,7 @@ function operate () {
             numToOperate.splice( 0, 3, +result );
         }
     };
-    operateResult.splice( 0, 14, +numToOperate[0] );
+    operateResult.splice( 0, 12, +numToOperate[0] );
     doubleZeroError ();
     display.innerText = operateResult;
     longResult ();

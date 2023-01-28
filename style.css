@@ -2,7 +2,7 @@ body {
     background-color: rgb( 72, 231, 240 );
     display: flex;
     justify-content: center;
-}
+} 
 
 .container {
     height: 505px;
@@ -41,7 +41,6 @@ body {
 
 button {
     font-size: 40px;
-    font-variant-numeric: normal;
     font-weight: bold;
     border-radius: 5px;
 }
