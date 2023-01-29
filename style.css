@@ -45,9 +45,22 @@ button {
     border-radius: 5px;
 }
 
+button:hover {
+    background-color: rgb(156, 157, 161);
+}
+
+button:active {
+    box-shadow: 0 5px #666;
+    transform: translateY(2px);
+}
+
 .btnEqual {
     background-color: rgb(159, 250, 110);
     width: 202%;
+}
+
+.btnEqual:hover {
+    background-color: rgb(100, 223, 35);
 }
 
 .cancelBtn {
@@ -55,6 +68,14 @@ button {
     color: white;
 }
 
+.cancelBtn:hover {
+    background-color: rgb(221, 25, 25);
+}
+
 .operator {
     background-color: rgb(255, 225, 128);
+}
+
+.operator:hover {
+    background-color: rgb(245, 202, 62);
 }
