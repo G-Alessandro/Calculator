@@ -449,7 +449,7 @@ document.addEventListener('keydown', function (event) {
         btnDivide.click();
     };
     if ( event.key === "Backspace") {
-        btnCancel.click();
+        btnBackspace.click();
     };
     if ( event.key === "Delete") {
         btnClear.click();
