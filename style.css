@@ -76,6 +76,7 @@ button:active {
     background-color: rgb(255, 225, 128);
 }
 
-.operator:hover {
+.operator:hover,
+.operator:focus {
     background-color: rgb(245, 202, 62);
 }
