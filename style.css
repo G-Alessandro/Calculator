@@ -46,10 +46,10 @@ button {
 }
 
 button:hover {
-    background-color: rgb(156, 157, 161);
+    background-color: rgb(181, 181, 182);
 }
 
-button:active {
+.clicked {
     box-shadow: 0 5px #666;
     transform: translateY(2px);
 }

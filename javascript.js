@@ -1,5 +1,6 @@
-const body = document.querySelector('body');
+const body = document.querySelector("body");
 const display = document.getElementById("display");
+const buttons = document.querySelectorAll("button");
 const btnBackspace = document.getElementById("btnBackspace");
 const btnClear = document.getElementById("btnClear");
 const btn1 = document.getElementById("btn1");
@@ -396,62 +397,157 @@ btnDivide.addEventListener('click', function () {
     console.log( operateResult, "operateResult 4" )
 });
 
+// buttons.forEach (function (btn) {
+//      btn.addEventListener("mousedown", function () {
+//          this.classList.add("clicked");
+//      });
+//      btn.addEventListener("mouseup", function () {
+//          this.classList.remove("clicked");
+//     });
+//     btn.addEventListener("keydown", function (event) {
+//         if ( event.key === btn.textContent) {
+//             this.classList.add("clicked");
+//         }
+//     });
+//     btn.addEventListener("keyup", function (event) {
+//         if ( event.key === btn.textContent) {
+//             this.classList.remove("clicked");
+//         }
+//     });
+// });
+
 document.addEventListener('keydown', function (event) {
     if ( event.key === "1") {
+        btn1.classList.add("clicked");
+        setTimeout (function () {
+            btn1.classList.remove("clicked");
+        }, 50);
         btn1.click();
     };
     if ( event.key === "2") {
+        btn2.classList.add("clicked");
+        setTimeout (function () {
+            btn2.classList.remove("clicked");
+        }, 50);
         btn2.click();
     };
     if ( event.key === "3") {
+        btn3.classList.add("clicked");
+        setTimeout (function () {
+            btn3.classList.remove("clicked");
+        }, 50);
         btn3.click();
     };
     if ( event.key === "4") {
+        btn4.classList.add("clicked");
+        setTimeout (function () {
+            btn4.classList.remove("clicked");
+        }, 50);
         btn4.click();
     };
     if ( event.key === "5") {
+        btn5.classList.add("clicked");
+        setTimeout (function () {
+            btn5.classList.remove("clicked");
+        }, 50);
         btn5.click();
     };
     if ( event.key === "6") {
+        btn6.classList.add("clicked");
+        setTimeout (function () {
+            btn6.classList.remove("clicked");
+        }, 50);
         btn6.click();
     };
     if ( event.key === "7") {
+        btn7.classList.add("clicked");
+        setTimeout (function () {
+            btn7.classList.remove("clicked");
+        }, 50);
         btn7.click();
     };
     if ( event.key === "8") {
+        btn8.classList.add("clicked");
+        setTimeout (function () {
+            btn8.classList.remove("clicked");
+        }, 50);
         btn8.click();
     };
     if ( event.key === "9") {
+        btn9.classList.add("clicked");
+        setTimeout (function () {
+            btn9.classList.remove("clicked");
+        }, 50);
         btn9.click();
     };
     if ( event.key === "0") {
+        btn0.classList.add("clicked");
+        setTimeout (function () {
+            btn0.classList.remove("clicked");
+        }, 50);
         btn0.click();
     };
     if ( event.key === ".") {
+        btnDot.classList.add("clicked");
+        setTimeout (function () {
+            btnDot.classList.remove("clicked");
+        }, 50);
         btnDot.click();
     };
     if ( event.key === "Enter") {
+        btnEqual.classList.add("clicked");
+        setTimeout (function () {
+            btnEqual.classList.remove("clicked");
+        }, 50);
         btnEqual.click();
     };
     if ( event.key === "%") {
+        btnPercentage.classList.add("clicked");
+        setTimeout (function () {
+            btnPercentage.classList.remove("clicked");
+        }, 50);
         btnPercentage.click();
     };
     if ( event.key === "+") {
+        btnAdd.classList.add("clicked");
+        setTimeout (function () {
+            btnAdd.classList.remove("clicked");
+        }, 50);
         btnAdd.click();
     };
     if ( event.key === "-") {
+        btnSubtract.classList.add("clicked");
+        setTimeout (function () {
+            btnSubtract.classList.remove("clicked");
+        }, 50);
         btnSubtract.click();
     };
     if ( event.key === "*") {
+        btnMultiply.classList.add("clicked");
+        setTimeout (function () {
+            btnMultiply.classList.remove("clicked");
+        }, 50);
         btnMultiply.click();
     };
     if ( event.key === "/") {
+        btnDivide.classList.add("clicked");
+        setTimeout (function () {
+            btnDivide.classList.remove("clicked");
+        }, 50);
         btnDivide.click();
     };
     if ( event.key === "Backspace") {
+        btnBackspace.classList.add("clicked");
+        setTimeout (function () {
+            btnBackspace.classList.remove("clicked");
+        }, 50);
         btnBackspace.click();
     };
     if ( event.key === "Delete") {
+        btnClear.classList.add("clicked");
+        setTimeout (function () {
+            btnClear.classList.remove("clicked");
+        }, 50);
         btnClear.click();
     };
 });
