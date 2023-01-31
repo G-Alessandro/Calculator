@@ -1,6 +1,5 @@
 const body = document.querySelector("body");
 const display = document.getElementById("display");
-const buttons = document.querySelectorAll("button");
 const btnBackspace = document.getElementById("btnBackspace");
 const btnClear = document.getElementById("btnClear");
 const btn1 = document.getElementById("btn1");
@@ -397,24 +396,42 @@ btnDivide.addEventListener('click', function () {
     console.log( operateResult, "operateResult 4" )
 });
 
-// buttons.forEach (function (btn) {
-//      btn.addEventListener("mousedown", function () {
-//          this.classList.add("clicked");
-//      });
-//      btn.addEventListener("mouseup", function () {
-//          this.classList.remove("clicked");
-//     });
-//     btn.addEventListener("keydown", function (event) {
-//         if ( event.key === btn.textContent) {
-//             this.classList.add("clicked");
-//         }
-//     });
-//     btn.addEventListener("keyup", function (event) {
-//         if ( event.key === btn.textContent) {
-//             this.classList.remove("clicked");
-//         }
-//     });
-// });
+function operatorFocus (btn) {
+    if ( btnPercentage.classList.contains("focused") === true ) {
+        btnPercentage.classList.remove("focused");
+    }
+    if ( btnAdd.classList.contains("focused") === true ) {
+        btnAdd.classList.remove("focused");
+    }
+    if ( btnSubtract.classList.contains("focused") === true ) {
+        btnSubtract.classList.remove("focused");
+    }
+    if ( btnMultiply.classList.contains("focused") === true ) {
+        btnMultiply.classList.remove("focused");
+    }
+    if ( btnDivide.classList.contains("focused") === true ) {
+        btnDivide.classList.remove("focused");
+    }
+    btn.classList.add("focused");
+};
+
+function removeOperatorFocus () {
+    if ( btnPercentage.classList.contains("focused") === true ) {
+        btnPercentage.classList.remove("focused");
+    }
+    if ( btnAdd.classList.contains("focused") === true ) {
+        btnAdd.classList.remove("focused");
+    }
+    if ( btnSubtract.classList.contains("focused") === true ) {
+        btnSubtract.classList.remove("focused");
+    }
+    if ( btnMultiply.classList.contains("focused") === true ) {
+        btnMultiply.classList.remove("focused");
+    }
+    if ( btnDivide.classList.contains("focused") === true ) {
+        btnDivide.classList.remove("focused");
+    }
+}
 
 document.addEventListener('keydown', function (event) {
     if ( event.key === "1") {
@@ -422,6 +439,7 @@ document.addEventListener('keydown', function (event) {
         setTimeout (function () {
             btn1.classList.remove("clicked");
         }, 50);
+        removeOperatorFocus ();
         btn1.click();
     };
     if ( event.key === "2") {
@@ -429,6 +447,7 @@ document.addEventListener('keydown', function (event) {
         setTimeout (function () {
             btn2.classList.remove("clicked");
         }, 50);
+        removeOperatorFocus ();
         btn2.click();
     };
     if ( event.key === "3") {
@@ -436,6 +455,7 @@ document.addEventListener('keydown', function (event) {
         setTimeout (function () {
             btn3.classList.remove("clicked");
         }, 50);
+        removeOperatorFocus ();
         btn3.click();
     };
     if ( event.key === "4") {
@@ -443,6 +463,7 @@ document.addEventListener('keydown', function (event) {
         setTimeout (function () {
             btn4.classList.remove("clicked");
         }, 50);
+        removeOperatorFocus ();
         btn4.click();
     };
     if ( event.key === "5") {
@@ -450,6 +471,7 @@ document.addEventListener('keydown', function (event) {
         setTimeout (function () {
             btn5.classList.remove("clicked");
         }, 50);
+        removeOperatorFocus ();
         btn5.click();
     };
     if ( event.key === "6") {
@@ -457,6 +479,7 @@ document.addEventListener('keydown', function (event) {
         setTimeout (function () {
             btn6.classList.remove("clicked");
         }, 50);
+        removeOperatorFocus ();
         btn6.click();
     };
     if ( event.key === "7") {
@@ -464,6 +487,7 @@ document.addEventListener('keydown', function (event) {
         setTimeout (function () {
             btn7.classList.remove("clicked");
         }, 50);
+        removeOperatorFocus ();
         btn7.click();
     };
     if ( event.key === "8") {
@@ -471,6 +495,7 @@ document.addEventListener('keydown', function (event) {
         setTimeout (function () {
             btn8.classList.remove("clicked");
         }, 50);
+        removeOperatorFocus ();
         btn8.click();
     };
     if ( event.key === "9") {
@@ -478,6 +503,7 @@ document.addEventListener('keydown', function (event) {
         setTimeout (function () {
             btn9.classList.remove("clicked");
         }, 50);
+        removeOperatorFocus ();
         btn9.click();
     };
     if ( event.key === "0") {
@@ -485,6 +511,7 @@ document.addEventListener('keydown', function (event) {
         setTimeout (function () {
             btn0.classList.remove("clicked");
         }, 50);
+        removeOperatorFocus ();
         btn0.click();
     };
     if ( event.key === ".") {
@@ -492,6 +519,7 @@ document.addEventListener('keydown', function (event) {
         setTimeout (function () {
             btnDot.classList.remove("clicked");
         }, 50);
+        removeOperatorFocus ();
         btnDot.click();
     };
     if ( event.key === "Enter") {
@@ -499,6 +527,7 @@ document.addEventListener('keydown', function (event) {
         setTimeout (function () {
             btnEqual.classList.remove("clicked");
         }, 50);
+        removeOperatorFocus ();
         btnEqual.click();
     };
     if ( event.key === "%") {
@@ -506,6 +535,7 @@ document.addEventListener('keydown', function (event) {
         setTimeout (function () {
             btnPercentage.classList.remove("clicked");
         }, 50);
+        operatorFocus (btnPercentage);
         btnPercentage.click();
     };
     if ( event.key === "+") {
@@ -513,6 +543,7 @@ document.addEventListener('keydown', function (event) {
         setTimeout (function () {
             btnAdd.classList.remove("clicked");
         }, 50);
+        operatorFocus (btnAdd);
         btnAdd.click();
     };
     if ( event.key === "-") {
@@ -520,6 +551,7 @@ document.addEventListener('keydown', function (event) {
         setTimeout (function () {
             btnSubtract.classList.remove("clicked");
         }, 50);
+        operatorFocus (btnSubtract);
         btnSubtract.click();
     };
     if ( event.key === "*") {
@@ -527,6 +559,7 @@ document.addEventListener('keydown', function (event) {
         setTimeout (function () {
             btnMultiply.classList.remove("clicked");
         }, 50);
+        operatorFocus (btnMultiply);
         btnMultiply.click();
     };
     if ( event.key === "/") {
@@ -534,6 +567,7 @@ document.addEventListener('keydown', function (event) {
         setTimeout (function () {
             btnDivide.classList.remove("clicked");
         }, 50);
+        operatorFocus (btnDivide);
         btnDivide.click();
     };
     if ( event.key === "Backspace") {
@@ -541,6 +575,7 @@ document.addEventListener('keydown', function (event) {
         setTimeout (function () {
             btnBackspace.classList.remove("clicked");
         }, 50);
+        removeOperatorFocus ();
         btnBackspace.click();
     };
     if ( event.key === "Delete") {
@@ -548,6 +583,7 @@ document.addEventListener('keydown', function (event) {
         setTimeout (function () {
             btnClear.classList.remove("clicked");
         }, 50);
+        removeOperatorFocus ();
         btnClear.click();
     };
 });
