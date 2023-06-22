@@ -1,7 +1,7 @@
 # Calculator
 
 <p>Calculator created to better understand how arrays work in javascript.</p>
-
+<a href="https://g-alessandro.github.io/Calculator/">Live preview</a>
 <h2>Things I've learned:</h2>
 
 <ul>
